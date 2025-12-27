@@ -1,0 +1,90 @@
+configuration_compliance:
+  absolute_paths_found: []
+  compliance_score: 3
+  configuration_content:
+    names:
+    - toolbox
+    - oxygen_tank
+    - fire_extinguisher
+    nc: 3
+    path: ../data/raw
+    test: test/images
+    train: train/images
+    val: val/images
+  has_required_keys: true
+  proper_directory_separation: true
+  uses_relative_paths: true
+legacy_path_handling:
+  optimize_training.py:
+    compliance_score: 2
+    deprecation_comments_count: 3
+    has_deprecation_comments: true
+    has_migration_guidance: true
+    sample_comments:
+    - '# DEPRECATED: Hard-coded absolute path - violates GATE 2 Dataset Usage Discipline'
+    - '# DEPRECATED: Absolute path'
+    - '# TODO: Migrate to use config/observo.yaml with relative paths'
+  quick_boost.py:
+    compliance_score: 2
+    deprecation_comments_count: 6
+    has_deprecation_comments: true
+    has_migration_guidance: true
+    sample_comments:
+    - '# DEPRECATED: Hard-coded path change - violates GATE 2 Dataset Usage Discipline'
+    - '# DEPRECATED: Hard-coded directory change'
+    - '# DEPRECATED: Hard-coded YAML path - violates GATE 2 compliance'
+  run_optimization.py:
+    compliance_score: 2
+    deprecation_comments_count: 4
+    has_deprecation_comments: true
+    has_migration_guidance: true
+    sample_comments:
+    - '# DEPRECATED: Hard-coded directory change - violates GATE 2 Dataset Usage Discipline'
+    - '# DEPRECATED: Hard-coded path change'
+    - '# DEPRECATED: Hard-coded config path - use config/observo.yaml'
+readme_compliance:
+  challenge_reference: true
+  compliance_score: 4
+  discipline_section_exists: true
+  excerpt: "## \U0001F4CB Dataset Usage Discipline\n\n**This model was trained exclusively\
+    \ on the Falcon synthetic dataset provided for the Duality AI Space Station Challenge,\
+    \ with strict train/val/test separation.**\n"
+  falcon_dataset_statement: true
+  separation_statement: true
+summary:
+  compliance_percentage: 95.8%
+  configuration_score: 3/3
+  gate2_status: COMPLIANT
+  generated_at: '2025-12-27T14:41:13.696074'
+  legacy_handling_score: 2.0/2
+  readme_compliance_score: 4/4
+  total_score: 11.5/12
+  training_script_score: 2.5/3
+training_script_paths:
+  detect.py:
+    compliance_score: 2
+    hardcoded_paths_found: []
+    has_validation: false
+    key_functions:
+    - "def load_dataset_config():\n    \"\"\"Load dataset configuration from approved\
+      \ config file.\"\"\"\n    config_path = os.path.join(os.path.dirname(__file__),\
+      \ '../config/observo.yaml')\n    if not os.path.exists(config_path):\n     \
+      \   raise FileNotFoundError(f\"Dataset configuration file not found: {config_path}\"\
+      )\n    with open(config_path, 'r') as f:"
+    uses_configuration: true
+  train.py:
+    compliance_score: 3
+    hardcoded_paths_found: []
+    has_validation: true
+    key_functions:
+    - "def load_dataset_config():\n    \"\"\"Load dataset configuration from approved\
+      \ config file.\"\"\"\n    config_path = os.path.join(os.path.dirname(__file__),\
+      \ '../config/observo.yaml')\n    if not os.path.exists(config_path):\n     \
+      \   raise FileNotFoundError(f\"Dataset configuration file not found: {config_path}\"\
+      )\n    with open(config_path, 'r') as f:"
+    - "def validate_dataset_separation(config):\n    \"\"\"Ensure train/val/test directories\
+      \ are properly separated.\"\"\"\n    required_dirs = ['train', 'val', 'test']\n\
+      \    for dir_type in required_dirs:\n        if dir_type not in config:\n  \
+      \          raise ValueError(f\"Missing {dir_type} directory in configuration\"\
+      )\n    # Ensure directories are different"
+    uses_configuration: true

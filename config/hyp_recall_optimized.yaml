@@ -1,0 +1,63 @@
+# Recall-Optimized Hyperparameters for 90% Recall Target
+# Specialized configuration to maximize recall (object detection sensitivity)
+
+# Learning rate optimization (aggressive for recall)
+lr0: 0.002          # Higher initial learning rate for faster recall learning
+lrf: 0.005          # Higher final learning rate to maintain sensitivity
+momentum: 0.95      # Higher momentum for better recall convergence
+weight_decay: 0.0003 # Lower weight decay to prevent over-regularization
+warmup_epochs: 8.0  # Longer warmup for stable recall training
+warmup_momentum: 0.85 # Higher warmup momentum
+warmup_bias_lr: 0.15 # Higher warmup bias lr
+
+# Loss function weights (RECALL-OPTIMIZED)
+box: 10.0           # Very high box loss for better localization
+cls: 0.3            # Lower class loss to prioritize detection over classification
+dfl: 2.0            # Higher distribution focal loss for better boundaries
+
+# Data augmentation (RECALL-FOCUSED)
+hsv_h: 0.02         # Higher hue variation for better recall
+hsv_s: 0.8          # Higher saturation variation
+hsv_v: 0.5          # Higher value variation
+degrees: 15.0       # More rotation for better recall at all angles
+translate: 0.25     # More translation for position robustness
+scale: 0.8          # More scale variation for size robustness
+shear: 3.0          # More shear for shape robustness
+perspective: 0.0002 # More perspective for viewpoint robustness
+flipud: 0.6         # Higher flip probability
+fliplr: 0.6         # Higher flip probability
+mosaic: 1.0         # Full mosaic for complex scenes
+mixup: 0.2          # Higher mixup for better generalization
+copy_paste: 0.4     # Higher copy-paste for object variety
+
+# Recall-specific optimizations
+anchor_t: 3.0       # Lower anchor threshold for more detections
+fl_gamma: 0.5       # Focal loss gamma for hard examples
+label_smoothing: 0.05 # Lower label smoothing to maintain sensitivity
+nbs: 64             # Nominal batch size
+dropout: 0.0        # No dropout to maintain all features
+
+# Advanced recall optimizations
+cos_lr: true        # Cosine learning rate for smooth convergence
+optimizer: 'AdamW'  # AdamW for better gradient handling
+close_mosaic: 15    # Keep mosaic longer for complex scene learning
+multi_scale: true   # Multi-scale training for size robustness
+rect: false         # No rectangular training for full augmentation
+cache: true         # Cache for faster training
+device: ''          # Auto-select device
+
+# Training control (recall-focused)
+patience: 150       # Higher patience for recall convergence
+save_period: 5      # Save more frequently to catch best recall
+val: true           # Validate during training
+plots: true         # Generate training plots
+exist_ok: true      # Overwrite existing project
+pretrained: true    # Use pretrained weights
+verbose: true       # Verbose output
+seed: 42            # Random seed for reproducibility
+deterministic: true # Deterministic training
+single_cls: false   # Multi-class detection
+image_weights: false # Don't use image weights
+auto_augment: 'randaugment' # Advanced auto-augmentation
+erasing: 0.3        # Lower random erasing to preserve objects
+crop_fraction: 1.0  # Full crop fraction

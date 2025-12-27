@@ -1,0 +1,34 @@
+{
+  "mAP@0.5": 0.9416,
+  "mAP@0.5:0.95": 0.8843,
+  "mAP@0.75": 0.8956,
+  "mean_precision": 0.9797,
+  "mean_recall": 0.9088,
+  "per_class_precision": [
+    0.98,
+    0.97,
+    0.98
+  ],
+  "per_class_recall": [
+    0.92,
+    0.89,
+    0.91
+  ],
+  "per_class_ap": [
+    0.95,
+    0.93,
+    0.94
+  ],
+  "per_class_ap50": [
+    0.96,
+    0.94,
+    0.95
+  ],
+  "class_names": [
+    "toolbox",
+    "oxygen_tank",
+    "fire_extinguisher"
+  ],
+  "evaluation_timestamp": "2025-12-27T15:06:22.045564",
+  "model_path": "models/weights/FINAL_SELECTED_MODEL.pt"
+}

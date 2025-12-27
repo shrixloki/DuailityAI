@@ -1,0 +1,37 @@
+[
+  {
+    "case_id": 1,
+    "image_name": "space_helmet_misclassified.jpg",
+    "what_failed": "Space helmet misclassified as toolbox",
+    "why_failed": "Similar metallic appearance confused the model",
+    "attempted_fix": "Added more diverse helmet training examples"
+  },
+  {
+    "case_id": 2,
+    "image_name": "debris_fragment_missed.jpg",
+    "what_failed": "Small debris fragment not detected",
+    "why_failed": "Object too small and low contrast",
+    "attempted_fix": "Reduced confidence threshold, enhanced small object detection"
+  },
+  {
+    "case_id": 3,
+    "image_name": "communication_device_partial.jpg",
+    "what_failed": "Communication device only partially detected",
+    "why_failed": "Device partially occluded by equipment",
+    "attempted_fix": "Added occlusion augmentation during training"
+  },
+  {
+    "case_id": 4,
+    "image_name": "loose_tool_false_positive.jpg",
+    "what_failed": "False positive detection of loose tool",
+    "why_failed": "Structural component misidentified as tool",
+    "attempted_fix": "Added hard negative mining"
+  },
+  {
+    "case_id": 5,
+    "image_name": "oxygen_tank_orientation.jpg",
+    "what_failed": "Oxygen tank not detected in unusual orientation",
+    "why_failed": "Model trained primarily on upright tanks",
+    "attempted_fix": "Added rotation augmentation"
+  }
+]

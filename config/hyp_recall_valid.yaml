@@ -1,0 +1,36 @@
+# Valid Recall-Optimized Hyperparameters for 90% Recall
+# Only valid YOLO parameters for maximum recall
+
+# Learning rate optimization
+lr0: 0.002          # Higher initial learning rate for recall
+lrf: 0.005          # Higher final learning rate
+momentum: 0.95      # Higher momentum for recall convergence
+weight_decay: 0.0003 # Lower weight decay
+warmup_epochs: 8.0  # Longer warmup
+warmup_momentum: 0.85 # Higher warmup momentum
+warmup_bias_lr: 0.15 # Higher warmup bias lr
+
+# Loss function weights (RECALL-OPTIMIZED)
+box: 10.0           # Very high box loss for better localization
+cls: 0.3            # Lower class loss to prioritize detection
+dfl: 2.0            # Higher distribution focal loss
+
+# Data augmentation (recall-focused)
+hsv_h: 0.02         # Higher hue variation
+hsv_s: 0.8          # Higher saturation variation
+hsv_v: 0.5          # Higher value variation
+degrees: 15.0       # More rotation for all angles
+translate: 0.25     # More translation for position robustness
+scale: 0.8          # More scale variation
+shear: 3.0          # More shear for shape robustness
+perspective: 0.0002 # More perspective variation
+flipud: 0.6         # Higher flip probability
+fliplr: 0.6         # Higher flip probability
+mosaic: 1.0         # Full mosaic for complex scenes
+mixup: 0.2          # Higher mixup for generalization
+copy_paste: 0.4     # Higher copy-paste for object variety
+
+# Valid recall optimizations
+cos_lr: true        # Cosine learning rate
+optimizer: 'AdamW'  # AdamW optimizer
+close_mosaic: 15    # Keep mosaic longer

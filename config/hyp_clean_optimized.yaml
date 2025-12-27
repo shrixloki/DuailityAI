@@ -1,0 +1,37 @@
+# Clean Ultra-Optimized Hyperparameters for 90%+ mAP50
+# Essential optimizations only to avoid parameter conflicts
+
+# Learning rate optimization
+lr0: 0.001          # Initial learning rate (reduced for fine-tuning)
+lrf: 0.01           # Final learning rate
+momentum: 0.937     # SGD momentum
+weight_decay: 0.0005 # Optimizer weight decay
+warmup_epochs: 5.0  # Warmup epochs
+warmup_momentum: 0.8 # Warmup initial momentum
+warmup_bias_lr: 0.1 # Warmup initial bias lr
+
+# Loss function weights (optimized for detection)
+box: 7.5            # Box loss gain (increased for better localization)
+cls: 0.5            # Class loss gain
+dfl: 1.5            # Distribution focal loss gain
+
+# Data augmentation (aggressive for better generalization)
+hsv_h: 0.015        # Image HSV-Hue augmentation
+hsv_s: 0.7          # Image HSV-Saturation augmentation
+hsv_v: 0.4          # Image HSV-Value augmentation
+degrees: 10.0       # Image rotation (+/- deg)
+translate: 0.2      # Image translation (+/- fraction)
+scale: 0.9          # Image scale (+/- gain)
+shear: 2.0          # Image shear (+/- deg)
+perspective: 0.0001 # Image perspective (+/- fraction)
+flipud: 0.5         # Image flip up-down (probability)
+fliplr: 0.5         # Image flip left-right (probability)
+mosaic: 1.0         # Image mosaic (probability)
+mixup: 0.15         # Image mixup (probability)
+copy_paste: 0.3     # Segment copy-paste (probability)
+
+# Advanced optimizations
+label_smoothing: 0.1 # Label smoothing epsilon
+cos_lr: true        # Use cosine learning rate scheduler
+optimizer: 'AdamW'  # Use AdamW optimizer
+close_mosaic: 10    # Disable mosaic in last N epochs

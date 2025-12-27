@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""
+Simple Perfect Training Script for 90%+ mAP50
+"""
+
+from ultralytics import YOLO
+import torch
+
+def main():
+    print("Starting Perfect Training for 90%+ mAP50")
+    print("=" * 50)
+    
+    # Check CUDA
+    if torch.cuda.is_available():
+        print(f"CUDA Device: {torch.cuda.get_device_name()}")
+    
+    # Load model
+    model = YOLO('yolov8n.pt')
+    
+    # Perfect training settings
+    results = model.train(
+        data='config/observo.yaml',
+        epochs=120,
+        batch=16,
+        imgsz=640,
+        project='runs/train',
+        name='perfect_90plus',
+        patience=50,
+        save_period=10,
+        cache=True,
+        amp=True,
+        fraction=1.0,
+        multi_scale=True,
+        cos_lr=True,
+        close_mosaic=15,
+        auto_augment='randaugment',
+        erasing=0.5,
+        label_smoothing=0.15,
+        optimizer='AdamW',
+        lr0=0.0008,
+        lrf=0.005,
+        momentum=0.95,
+        weight_decay=0.0003,
+        warmup_epochs=8.0,
+        box=8.5,
+        cls=0.8,
+        dfl=2.0,
+        hsv_h=0.02,
+        hsv_s=0.8,
+        hsv_v=0.5,
+        degrees=15.0,
+        translate=0.25,
+        scale=0.95,
+        shear=3.0,
+        flipud=0.6,
+        fliplr=0.6,
+        mosaic=1.0,
+        mixup=0.2,
+        copy_paste=0.4
+    )
+    
+    print("Training completed!")
+    print(f"Best model saved to: runs/train/perfect_90plus/weights/best.pt")
+
+if __name__ == "__main__":
+    main()

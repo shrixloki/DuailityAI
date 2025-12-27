@@ -1,0 +1,35 @@
+# Falcon Dataset Configuration - 7 Classes for GATE 4 Compliance
+# paths relative to project root
+path: ../data/raw
+train: train/images
+val: val/images
+test: test/images
+
+# 7 classes as required by GATE 4 — Model Correctness
+nc: 7
+names: [
+  'OxygenTank',        # Class 0
+  'NitrogenTank',      # Class 1  
+  'FirstAidBox',       # Class 2
+  'FireAlarm',         # Class 3
+  'SafetySwitchPanel', # Class 4
+  'EmergencyPhone',    # Class 5
+  'FireExtinguisher'   # Class 6
+]
+
+# Class mapping documentation for GATE 4 compliance
+class_mapping:
+  0: 'OxygenTank'
+  1: 'NitrogenTank'
+  2: 'FirstAidBox'
+  3: 'FireAlarm'
+  4: 'SafetySwitchPanel'
+  5: 'EmergencyPhone'
+  6: 'FireExtinguisher'
+
+# Dataset information
+dataset_info:
+  name: "Falcon Synthetic Dataset"
+  challenge: "Duality AI Space Station Challenge"
+  total_classes: 7
+  class_order: "As defined in names array above"

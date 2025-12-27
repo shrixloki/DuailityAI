@@ -1,0 +1,53 @@
+gate4_compliance:
+  configuration_check:
+    class_count_match: true
+    config_content:
+      names: &id001
+      - toolbox
+      - oxygen_tank
+      - fire_extinguisher
+      - space_helmet
+      - communication_device
+      - debris_fragment
+      - loose_tool
+      nc: 7
+      path: ../data/raw
+      test: test/images
+      train: train/images
+      val: val/images
+    expected_classes: 7
+    file_path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\config\observo.yaml
+    names: *id001
+    names_count_match: true
+    nc: 7
+    status: COMPLIANT
+  documentation_check:
+    documented_files:
+    - L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\config\observo.yaml
+    - L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\config\falcon_7_classes.yaml
+    has_class_order_docs: true
+    status: COMPLIANT
+  model_architecture_check:
+    class_count_match: false
+    expected_classes: 7
+    model_classes: 3
+    model_names:
+      0: FireExtinguisher
+      1: ToolBox
+      2: OxygenTank
+    model_path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\models\weights\best.pt
+    status: NON_COMPLIANT
+  model_summary:
+    status: SUCCESS
+    summary:
+      architecture: YOLOv8 Detection Model
+      class_names:
+      - FireExtinguisher
+      - ToolBox
+      - OxygenTank
+      classes: 3
+      model_path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\models\weights\best.pt
+      model_size_mb: 21.47171974182129
+      model_type: YOLOv8
+  overall_status: MOSTLY_COMPLIANT
+  timestamp: '2025-12-27T14:59:54.941052'

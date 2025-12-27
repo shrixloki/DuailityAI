@@ -1,0 +1,17 @@
+# paths to actual dataset
+path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\hackathon2_train_3\train_3
+train: train3/images
+val: val3/images
+test: ../../../data/raw/test/images  # Using dummy test data
+
+# 7 classes as required by GATE 4 — Model Correctness (CRITICAL)
+nc: 7
+names: [
+  'OxygenTank',        # Class 0
+  'NitrogenTank',      # Class 1  
+  'FirstAidBox',       # Class 2
+  'FireAlarm',         # Class 3
+  'SafetySwitchPanel', # Class 4
+  'EmergencyPhone',    # Class 5
+  'FireExtinguisher'   # Class 6
+]

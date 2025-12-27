@@ -1,0 +1,37 @@
+gate5_evaluation_reproducibility:
+  console_output_example: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\evaluation_console_output.txt
+  evaluation_script:
+    has_argparse: true
+    has_failure_analysis: true
+    has_metrics: true
+    has_weights_arg: true
+    missing_components: []
+    script_path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\evaluate.py
+    script_size: 24898
+    status: COMPLIANT
+  final_model:
+    found_models:
+    - name: FINAL_SELECTED_MODEL.pt
+      path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\models\weights\FINAL_SELECTED_MODEL.pt
+      size_mb: 21.47171974182129
+    - name: best.pt
+      path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\models\weights\best.pt
+      size_mb: 21.47171974182129
+    has_best_model: true
+    has_final_model: true
+    status: COMPLIANT
+  status: COMPLIANT
+gate6_failure_case_honesty:
+  failure_cases_structure:
+    found_directories:
+    - directory: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\evaluation_results\failure_cases
+      json_files:
+      - L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\evaluation_results\failure_cases\failure_analysis.json
+      md_files:
+      - L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\evaluation_results\failure_cases\failure_summary.md
+    has_failure_analysis: true
+    status: COMPLIANT
+  mock_results: {}
+  status: COMPLIANT
+overall_status: COMPLIANT
+timestamp: '2025-12-27T15:06:55.203256'

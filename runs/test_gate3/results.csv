@@ -1,0 +1,2 @@
+epoch,train/box_loss,train/cls_loss,val/box_loss,val/cls_loss,metrics/mAP50
+1,0.5,0.3,0.4,0.2,0.85

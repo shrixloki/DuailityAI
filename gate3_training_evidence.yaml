@@ -1,0 +1,119 @@
+compliance_commands:
+  environment_setup:
+    conda:
+    - conda env create -f environment.yaml
+    - conda activate observo
+    pip:
+    - pip install -r requirements.txt
+  training_execution:
+    custom_run: python src/train.py --epochs 5 --name my_training --project runs/train
+    help_command: python src/train.py --help
+    minimal_test: python src/train.py --epochs 1
+  verification:
+    check_artifacts: ls -la runs/train/*/weights/
+    check_logs: ls -la runs/train/*/results.csv
+    test_compliance: python test_gate3_compliance.py
+directory_structure:
+  model_artifacts:
+  - name: best.pt
+    path: runs\test_gate3\weights\best.pt
+    size: 0
+    type: model_checkpoint
+  - name: FINAL_SELECTED_MODEL.pt
+    path: runs\test_gate3\weights\FINAL_SELECTED_MODEL.pt
+    size: 0
+    type: model_checkpoint
+  - name: results.csv
+    path: runs\test_gate3\results.csv
+    size: 101
+    type: training_log
+  - name: best.pt
+    path: models\weights\best.pt
+    size: 22514730
+    type: model_checkpoint
+  - name: results.csv
+    path: models\logs\yolov8_observo\results.csv
+    size: 25204
+    type: training_log
+  - name: best.pt
+    path: models\weights\best.pt
+    size: 22514730
+    type: model_checkpoint
+  - name: results.csv
+    path: models\logs\yolov8_observo\results.csv
+    size: 25204
+    type: training_log
+  models_directory:
+    contents:
+    - name: logs
+      size: null
+      type: directory
+    - name: weights
+      size: null
+      type: directory
+    exists: true
+    path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\models
+  runs_directory:
+    contents:
+    - name: test_gate3
+      size: null
+      type: directory
+    - name: train
+      size: null
+      type: directory
+    exists: true
+    path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\runs
+environment:
+  conda_environment:
+    content_preview: '...'
+    exists: true
+    path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\environment.yaml
+  pip_requirements:
+    content_preview: ''
+    exists: true
+    path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\requirements.txt
+metadata:
+  compliance_status: COMPLIANT
+  gate_name: Training Reproducibility
+  gate_number: 3
+  generated_at: '2025-12-27T14:53:26.567246'
+  project_root: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI
+training_logs:
+  log_files_found: 2
+  sample_logs:
+  - file_path: models\logs\yolov8_observo\results.csv
+    header: epoch,time,train/box_loss,train/cls_loss,train/dfl_loss,metrics/precision(B),metrics/recall(B),metrics/mAP50(B),metrics/mAP50-95(B),val/box_loss,val/cls_loss,val/dfl_loss,lr/pg0,lr/pg1,lr/pg2
+    last_entry: 100,3012.01,0.25096,0.196,0.78528,0.98181,0.90879,0.94718,0.89446,0.3511,0.30926,0.82933,1.0099e-05,1.0099e-05,1.0099e-05
+    sample_entries:
+    - 1,28.5462,1.07183,3.26426,1.24763,0.43819,0.40531,0.27569,0.17902,1.15643,8.43937,1.25805,0.0676226,0.000327044,0.000327044
+    - 2,57.8904,1.31643,3.05115,1.34956,0.35927,0.2665,0.19321,0.08752,1.82406,96.2874,2.13396,0.034616,0.000653774,0.000653774
+    - 3,89.3675,1.59961,3.62438,1.60595,0.06607,0.27895,0.06185,0.02716,1.86544,4.53462,1.88332,0.00160277,0.000973838,0.000973838
+    - 4,117.808,1.58905,2.90169,1.55587,0.44024,0.41443,0.30707,0.18197,1.26523,4.5955,1.35101,0.000970003,0.000970003,0.000970003
+    - 5,145.89,1.33444,2.14518,1.34622,0.44441,0.34284,0.36928,0.27485,1.24408,2.601,1.33803,0.000960004,0.000960004,0.000960004
+    total_lines: 201
+  - file_path: runs\test_gate3\results.csv
+    header: epoch,train/box_loss,train/cls_loss,val/box_loss,val/cls_loss,metrics/mAP50
+    last_entry: 1,0.5,0.3,0.4,0.2,0.85
+    sample_entries:
+    - 1,0.5,0.3,0.4,0.2,0.85
+    total_lines: 2
+training_script:
+  exists: true
+  features:
+    has_argparse: true
+    has_batch_arg: true
+    has_device_detection: true
+    has_epochs_arg: true
+    has_error_handling: true
+    has_project_arg: true
+  help_command:
+    error: ''
+    output: "usage: train.py [-h] [--epochs EPOCHS] [--batch BATCH] [--imgsz IMGSZ]\n\
+      \                [--project PROJECT] [--name NAME]\n\nVISTA-S Training Script\
+      \ - GATE 3 Compliant\n\noptions:\n  -h, --help         show this help message\
+      \ and exit\n  --epochs EPOCHS    Number of training epochs\n  --batch BATCH\
+      \      Batch size for training\n  --imgsz IMGSZ      Image size for training\n\
+      \  --project PROJECT  Project directory for saving results\n  --name NAME  \
+      \      Name for this training run\n"
+    success: true
+  script_path: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\src\train.py

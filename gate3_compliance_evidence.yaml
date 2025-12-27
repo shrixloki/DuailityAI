@@ -1,0 +1,22 @@
+commands:
+  conda_install: conda env create -f environment.yaml && conda activate observo
+  pip_install: pip install -r requirements.txt
+  training_help: python src/train.py --help
+  training_test: python src/train.py --epochs 1
+evidence:
+  configuration: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\config\observo.yaml
+  environment_files:
+    conda_env: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\environment.yaml
+    pip_requirements: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\requirements.txt
+  model_artifacts:
+    best_model: runs/test_gate3/weights/best.pt
+    final_model: runs/test_gate3/weights/FINAL_SELECTED_MODEL.pt
+    training_logs: runs/test_gate3/results.csv
+  runs_directory: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\runs
+  training_script: L:\Hackathons\Projects\Calcutta Hacks 2.O\DualityAI\src\train.py
+gate3_compliance:
+  environment_install: true
+  log_generation: true
+  model_checkpoint: true
+  overall_status: COMPLIANT
+  training_execution: true

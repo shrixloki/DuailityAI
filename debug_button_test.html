@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Button Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+        .result { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Debug: Testing API Connection</h1>
+    
+    <button onclick="testModelsAPI()">Test Models API</button>
+    <button onclick="testPredictAPI()">Test Predict API (needs image)</button>
+    
+    <div>
+        <input type="file" id="imageInput" accept="image/*">
+        <button onclick="testWithImage()">Test Prediction with Image</button>
+    </div>
+    
+    <div id="result" class="result">Click a button to test...</div>
+
+    <script>
+        async function testModelsAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing Models API...';
+            
+            try {
+                console.log('Fetching models from http://localhost:8000/api/models');
+                const response = await fetch('http://localhost:8000/api/models');
+                console.log('Response status:', response.status);
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3>✅ Models API Working!</h3>
+                        <p>Found ${data.models.length} models:</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = '❌ API returned error: ' + JSON.stringify(data);
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                resultDiv.innerHTML = '❌ Connection failed: ' + error.message;
+            }
+        }
+
+        async function testWithImage() {
+            const resultDiv = document.getElementById('result');
+            const imageInput = document.getElementById('imageInput');
+            
+            if (!imageInput.files[0]) {
+                resultDiv.innerHTML = '❌ Please select an image first';
+                return;
+            }
+            
+            resultDiv.innerHTML = 'Testing Prediction API...';
+            
+            try {
+                const formData = new FormData();
+                formData.append('image', imageInput.files[0]);
+                formData.append('model', 'flagship');
+                formData.append('confidence', '0.5');
+
+                console.log('Sending prediction request to http://localhost:8000/api/predict');
+                const response = await fetch('http://localhost:8000/api/predict', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                console.log('Prediction response status:', response.status);
+                const data = await response.json();
+                console.log('Prediction response data:', data);
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3>✅ Prediction API Working!</h3>
+                        <p>Model: ${data.model_name}</p>
+                        <p>Detections: ${data.detection_count}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = '❌ Prediction failed: ' + JSON.stringify(data);
+                }
+            } catch (error) {
+                console.error('Prediction Error:', error);
+                resultDiv.innerHTML = '❌ Prediction failed: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
