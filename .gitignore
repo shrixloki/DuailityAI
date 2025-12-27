@@ -114,18 +114,11 @@ mobile/vendor/bundle/
 *.orig
 *.old
 
-# Do NOT ignore these important deployment files
-# render.yaml
-
-# Exclude model weights, logs, uploads, and sensitive files from accidental commit
-# (Uncomment below if you want to keep these tracked)
-# !models/weights/.gitkeep
-# !uploads/.gitkeep
-
-  models/weights/
-  data/
-  uploads/
-  notebooks/
+# Model weights, data, and large files
+models/weights/
+data/
+uploads/
+notebooks/
 
 # =====================
 # End of .gitignore
