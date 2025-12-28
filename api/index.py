@@ -24,8 +24,14 @@ def detect_objects():
         if image_file.filename == '':
             return jsonify({"error": "No image selected"}), 400
         
-        # For now, return a mock response since we can't run the full model on Vercel
-        # In a real deployment, you'd want to use a lighter model or external service
+        # Basic image validation
+        try:
+            img = Image.open(image_file)
+            width, height = img.size
+        except Exception as e:
+            return jsonify({"error": "Invalid image format"}), 400
+        
+        # Mock response for demonstration
         mock_response = {
             "detections": [
                 {
@@ -40,7 +46,7 @@ def detect_objects():
                 }
             ],
             "processing_time": 0.5,
-            "image_size": [640, 480],
+            "image_size": [width, height],
             "model_version": "yolov8n-duality"
         }
         
