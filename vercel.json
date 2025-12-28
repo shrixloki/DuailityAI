@@ -5,7 +5,7 @@
       "src": "Web_App_frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "Web_App_frontend/dist"
       }
     },
     {
@@ -22,8 +22,12 @@
       "dest": "/api/index.py"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
       "dest": "/Web_App_frontend/dist/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/Web_App_frontend/dist/index.html"
     }
   ],
   "env": {
